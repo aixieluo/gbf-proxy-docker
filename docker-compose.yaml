@@ -5,7 +5,7 @@ services:
     image: nginx:latest
     container_name: pn
     ports:
-      - 8088:80
+      - 8088:8088
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     networks:
