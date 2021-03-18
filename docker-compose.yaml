@@ -4,11 +4,6 @@ services:
   nginx:
     image: nginx:latest
     container_name: pn
-    depends_on:
-      - proxy1
-      - proxy2
-      - proxy3
-      - proxy4
     ports:
       - 8088:80
     volumes:
