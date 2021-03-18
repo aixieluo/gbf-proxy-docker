@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: pn
+    depends_on:
+      - proxy1
+      - proxy2
+      - proxy3
+      - proxy4
+    ports:
+      - 8088:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - net
+
+  proxy1:
+    container_name: p1
+    build:
+      context: ./proxy
+    ports:
+      - 8139:8088
+    networks:
+      - net
+
+  proxy2:
+    container_name: p2
+    build:
+      context: ./proxy
+    ports:
+      - 8239:8088
+    networks:
+      - net
+
+
+  proxy3:
+    container_name: p3
+    build:
+      context: ./proxy
+    ports:
+      - 8339:8088
+    networks:
+      - net
+
+
+
+  proxy4:
+    container_name: p4
+    build:
+      context: ./proxy
+    ports:
+      - 8439:8088
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
